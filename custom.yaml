@@ -1,0 +1,22 @@
+# Copy this file to ~/.docker/mcp/catalogs/custom.yaml
+version: 2
+name: custom
+displayName: Custom MCP Servers
+
+servers:
+  lanyard:
+    type: oci-image
+    image: lanyard-mcp-server:latest
+    transport:
+      type: stdio
+
+registry:
+  lanyard:
+    description: "Discord user presence tracking via Lanyard API"
+    title: "Lanyard"
+    type: server
+    image: lanyard-mcp-server:latest
+    tools:
+      - name: get_user_presence
+      - name: get_user_spotify
+      - name: get_user_kv

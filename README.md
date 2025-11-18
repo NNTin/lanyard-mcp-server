@@ -29,17 +29,68 @@ All tools include:
 
 ## Installation
 
-See the step-by-step instructions provided with the files.
+### Step 1: Build the Docker Image
+
+```bash
+docker build -t lanyard-mcp-server:latest .
+```
+
+### Step 2: Configure MCP Catalog
+
+Copy the custom catalog configuration:
+
+```bash
+# Copy custom.yaml to your Docker MCP catalogs directory
+cp custom.yaml ~/.docker/mcp/catalogs/custom.yaml
+```
+
+### Step 3: VS Code Integration (Optional)
+
+If using Visual Studio Code with MCP support:
+
+```bash
+# Copy the MCP configuration to your project
+cp .vscode/mcp.json /path/to/your/project/.vscode/
+```
+
+### Step 4: Import and Enable the Server
+
+```bash
+# Import the catalog
+docker mcp catalog import custom.yaml
+
+# Enable the Lanyard server
+docker mcp server enable lanyard
+```
+
+## Agent Prompts
+
+When working with AI agents that have access to this MCP server, you can use these example commands:
+
+### Get User Presence Information
+```bash
+docker mcp tools call get_user_presence user_id=77488778255540224
+```
+
+### Get Spotify Activity
+```bash
+docker mcp tools call get_user_spotify user_id=77488778255540224
+```
+
+### Get Custom KV Data
+```bash
+docker mcp tools call get_user_kv user_id=77488778255540224
+```
 
 ## Usage Examples
 
 In Claude Desktop, you can ask:
 
-- "What is the Discord presence for user 94490510688792576?"
-- "Is user 94490510688792576 listening to Spotify?"
-- "Show me the custom KV data for Discord user 94490510688792576"
-- "Get the current status and activities for user 94490510688792576"
-- "What song is user 94490510688792576 listening to on Spotify?"
+- "What is the Discord presence for user 77488778255540224?"
+- "Is user 77488778255540224 listening to Spotify?"
+- "Show me the custom KV data for Discord user 77488778255540224"
+- "Get the current status and activities for user 77488778255540224"
+- "What song is user 77488778255540224 listening to on Spotify?"
 
 ## What is Lanyard?
 
